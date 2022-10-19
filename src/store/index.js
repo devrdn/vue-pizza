@@ -1,6 +1,5 @@
 import filterModule from '@/store/filterModule.js';
-
-const { createStore } = require('vuex');
+import { createStore } from 'vuex';
 
 export default createStore({
   modules: {

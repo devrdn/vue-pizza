@@ -8,17 +8,24 @@
         />
       </svg>
       <b>Сортировка по:</b>
-      <span @click="setActivePopup">популярности</span>
+      <span @click="setActivePopup">{{ sortType.name }}</span>
     </div>
     <div v-if="isActivePopup" class="sort__popup">
       <ul>
-        <li v-for="sort in sortList">{{ sort }}</li>
+        <li
+          v-for="sort in sortList"
+          :class="{ active: sort.name === sortType.name }"
+          @click="setSort(sort)"
+        >
+          {{ sort.name }}
+        </li>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex';
 export default {
   data() {
     return {
@@ -31,14 +38,21 @@ export default {
     };
   },
   methods: {
+    ...mapMutations({
+      setSortType: 'filter/setSortType',
+    }),
+    setSort(sort) {
+      this.setSortType(sort);
+      this.setActivePopup();
+    },
     setActivePopup() {
       this.isActivePopup = !this.isActivePopup;
     },
   },
   computed: {
     ...mapState({
-      
-    })
+      sortType: (state) => state.filter.sortType,
+    }),
   },
 };
 </script>

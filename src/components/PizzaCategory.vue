@@ -1,17 +1,35 @@
 <template>
   <div class="categories">
     <ul>
-      <li v-for="category in categories">{{ category }}</li>
+      <!-- Т.к. массив категорий не будет дополнятся временно укажем key=index -->
+      <li
+        v-for="(category, index) in categories"
+        :key="index"
+        :class="{ active: categoryId === index }"
+        @click="setCategoryId(index)"
+      >
+        {{ category }}
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex';
+
 export default {
   data() {
     return {
       categories: ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'],
     };
+  },
+  methods: {
+    ...mapMutations({
+      setCategoryId: 'filter/setCategoryId',
+    }),
+  },
+  computed: {
+    ...mapState({ categoryId: (state) => state.filter.categoryId }),
   },
 };
 </script>

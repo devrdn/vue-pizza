@@ -18,6 +18,8 @@ const filterModule = {
       state.sortType = sortType;
     },
   },
+
+  namespaced: true,
 };
 
 export default filterModule;
