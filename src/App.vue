@@ -1,0 +1,712 @@
+<template>
+  <div>
+    <div class="wrapper">
+      <pizza-header />
+      <div class="content">
+        <div class="container">
+          <div class="content__top">
+            <div class="categories">
+              <ul>
+                <li class="active">Все</li>
+                <li>Мясные</li>
+                <li>Вегетарианская</li>
+                <li>Гриль</li>
+                <li>Острые</li>
+                <li>Закрытые</li>
+              </ul>
+            </div>
+            <div class="sort">
+              <div class="sort__label">
+                <svg
+                  width="10"
+                  height="6"
+                  viewBox="0 0 10 6"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10 5C10 5.16927 9.93815 5.31576 9.81445 5.43945C9.69075 5.56315 9.54427 5.625 9.375 5.625H0.625C0.455729 5.625 0.309245 5.56315 0.185547 5.43945C0.061849 5.31576 0 5.16927 0 5C0 4.83073 0.061849 4.68424 0.185547 4.56055L4.56055 0.185547C4.68424 0.061849 4.83073 0 5 0C5.16927 0 5.31576 0.061849 5.43945 0.185547L9.81445 4.56055C9.93815 4.68424 10 4.83073 10 5Z"
+                    fill="#2C2C2C"
+                  />
+                </svg>
+                <b>Сортировка по:</b>
+                <span>популярности</span>
+              </div>
+              <div class="sort__popup">
+                <ul>
+                  <li class="active">популярности</li>
+                  <li>цене</li>
+                  <li>алфавиту</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <h2 class="content__title">Все пиццы</h2>
+          <div class="content__items">
+            <div class="pizza-block">
+              <img
+                class="pizza-block__image"
+                src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+                alt="Pizza"
+              />
+              <h4 class="pizza-block__title">Чизбургер-пицца</h4>
+              <div class="pizza-block__selector">
+                <ul>
+                  <li class="active">тонкое</li>
+                  <li>традиционное</li>
+                </ul>
+                <ul>
+                  <li class="active">26 см.</li>
+                  <li>30 см.</li>
+                  <li>40 см.</li>
+                </ul>
+              </div>
+              <div class="pizza-block__bottom">
+                <div class="pizza-block__price">от 395 ₽</div>
+                <div class="button button--outline button--add">
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
+                      fill="white"
+                    />
+                  </svg>
+                  <span>Добавить</span>
+                  <i>2</i>
+                </div>
+              </div>
+            </div>
+            <div class="pizza-block">
+              <img
+                class="pizza-block__image"
+                src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+                alt="Pizza"
+              />
+              <h4 class="pizza-block__title">Чизбургер-пицца</h4>
+              <div class="pizza-block__selector">
+                <ul>
+                  <li class="active">тонкое</li>
+                  <li>традиционное</li>
+                </ul>
+                <ul>
+                  <li class="active">26 см.</li>
+                  <li>30 см.</li>
+                  <li>40 см.</li>
+                </ul>
+              </div>
+              <div class="pizza-block__bottom">
+                <div class="pizza-block__price">от 395 ₽</div>
+                <div class="button button--outline button--add">
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
+                      fill="white"
+                    />
+                  </svg>
+                  <span>Добавить</span>
+                  <i>2</i>
+                </div>
+              </div>
+            </div>
+            <div class="pizza-block">
+              <img
+                class="pizza-block__image"
+                src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+                alt="Pizza"
+              />
+              <h4 class="pizza-block__title">Чизбургер-пицца</h4>
+              <div class="pizza-block__selector">
+                <ul>
+                  <li class="active">тонкое</li>
+                  <li>традиционное</li>
+                </ul>
+                <ul>
+                  <li class="active">26 см.</li>
+                  <li>30 см.</li>
+                  <li>40 см.</li>
+                </ul>
+              </div>
+              <div class="pizza-block__bottom">
+                <div class="pizza-block__price">от 395 ₽</div>
+                <div class="button button--outline button--add">
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
+                      fill="white"
+                    />
+                  </svg>
+                  <span>Добавить</span>
+                  <i>2</i>
+                </div>
+              </div>
+            </div>
+            <div class="pizza-block">
+              <img
+                class="pizza-block__image"
+                src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+                alt="Pizza"
+              />
+              <h4 class="pizza-block__title">Чизбургер-пицца</h4>
+              <div class="pizza-block__selector">
+                <ul>
+                  <li class="active">тонкое</li>
+                  <li>традиционное</li>
+                </ul>
+                <ul>
+                  <li class="active">26 см.</li>
+                  <li>30 см.</li>
+                  <li>40 см.</li>
+                </ul>
+              </div>
+              <div class="pizza-block__bottom">
+                <div class="pizza-block__price">от 395 ₽</div>
+                <div class="button button--outline button--add">
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
+                      fill="white"
+                    />
+                  </svg>
+                  <span>Добавить</span>
+                  <i>2</i>
+                </div>
+              </div>
+            </div>
+            <div class="pizza-block">
+              <img
+                class="pizza-block__image"
+                src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+                alt="Pizza"
+              />
+              <h4 class="pizza-block__title">Чизбургер-пицца</h4>
+              <div class="pizza-block__selector">
+                <ul>
+                  <li class="active">тонкое</li>
+                  <li>традиционное</li>
+                </ul>
+                <ul>
+                  <li class="active">26 см.</li>
+                  <li>30 см.</li>
+                  <li>40 см.</li>
+                </ul>
+              </div>
+              <div class="pizza-block__bottom">
+                <div class="pizza-block__price">от 395 ₽</div>
+                <div class="button button--outline button--add">
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
+                      fill="white"
+                    />
+                  </svg>
+                  <span>Добавить</span>
+                  <i>2</i>
+                </div>
+              </div>
+            </div>
+            <div class="pizza-block">
+              <img
+                class="pizza-block__image"
+                src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+                alt="Pizza"
+              />
+              <h4 class="pizza-block__title">Чизбургер-пицца</h4>
+              <div class="pizza-block__selector">
+                <ul>
+                  <li class="active">тонкое</li>
+                  <li>традиционное</li>
+                </ul>
+                <ul>
+                  <li class="active">26 см.</li>
+                  <li>30 см.</li>
+                  <li>40 см.</li>
+                </ul>
+              </div>
+              <div class="pizza-block__bottom">
+                <div class="pizza-block__price">от 395 ₽</div>
+                <div class="button button--outline button--add">
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
+                      fill="white"
+                    />
+                  </svg>
+                  <span>Добавить</span>
+                  <i>2</i>
+                </div>
+              </div>
+            </div>
+            <div class="pizza-block">
+              <img
+                class="pizza-block__image"
+                src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+                alt="Pizza"
+              />
+              <h4 class="pizza-block__title">Чизбургер-пицца</h4>
+              <div class="pizza-block__selector">
+                <ul>
+                  <li class="active">тонкое</li>
+                  <li>традиционное</li>
+                </ul>
+                <ul>
+                  <li class="active">26 см.</li>
+                  <li>30 см.</li>
+                  <li>40 см.</li>
+                </ul>
+              </div>
+              <div class="pizza-block__bottom">
+                <div class="pizza-block__price">от 395 ₽</div>
+                <div class="button button--outline button--add">
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
+                      fill="white"
+                    />
+                  </svg>
+                  <span>Добавить</span>
+                  <i>2</i>
+                </div>
+              </div>
+            </div>
+            <div class="pizza-block">
+              <img
+                class="pizza-block__image"
+                src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+                alt="Pizza"
+              />
+              <h4 class="pizza-block__title">Чизбургер-пицца</h4>
+              <div class="pizza-block__selector">
+                <ul>
+                  <li class="active">тонкое</li>
+                  <li>традиционное</li>
+                </ul>
+                <ul>
+                  <li class="active">26 см.</li>
+                  <li>30 см.</li>
+                  <li>40 см.</li>
+                </ul>
+              </div>
+              <div class="pizza-block__bottom">
+                <div class="pizza-block__price">от 395 ₽</div>
+                <div class="button button--outline button--add">
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
+                      fill="white"
+                    />
+                  </svg>
+                  <span>Добавить</span>
+                  <i>2</i>
+                </div>
+              </div>
+            </div>
+            <div class="pizza-block">
+              <img
+                class="pizza-block__image"
+                src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+                alt="Pizza"
+              />
+              <h4 class="pizza-block__title">Чизбургер-пицца</h4>
+              <div class="pizza-block__selector">
+                <ul>
+                  <li class="active">тонкое</li>
+                  <li>традиционное</li>
+                </ul>
+                <ul>
+                  <li class="active">26 см.</li>
+                  <li>30 см.</li>
+                  <li>40 см.</li>
+                </ul>
+              </div>
+              <div class="pizza-block__bottom">
+                <div class="pizza-block__price">от 395 ₽</div>
+                <div class="button button--outline button--add">
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
+                      fill="white"
+                    />
+                  </svg>
+                  <span>Добавить</span>
+                  <i>2</i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import PizzaHeader from '@/components/PizzaHeader.vue';
+export default {
+  components: {
+    PizzaHeader,
+  },
+};
+</script>
+
+<style lang="scss">
+body {
+  background-color: $background;
+  font-family: 'Lato';
+}
+
+.wrapper {
+  width: calc(100vw - 100px);
+  height: 100%;
+  background-color: #fff;
+  margin: 50px auto;
+  border-radius: 10px;
+  max-width: 1400px;
+}
+
+.content {
+  padding: 40px 0;
+
+  &__title {
+    margin: 35px 0;
+  }
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.container {
+  width: $container-width;
+  margin: 0 auto;
+
+  &--cart {
+    max-width: 820px;
+    margin: 90px auto;
+    .content__title {
+      margin: 0;
+    }
+  }
+}
+
+.cart {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .content__title {
+    display: flex;
+    align-items: center;
+    font-size: 32px;
+
+    svg {
+      position: relative;
+      top: -2px;
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+      path {
+        stroke: $black;
+        stroke-width: 1.9;
+      }
+    }
+  }
+
+  &__clear {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    @include noselect();
+
+    span {
+      display: inline-block;
+      margin-left: 7px;
+      color: #b6b6b6;
+      font-size: 18px;
+    }
+
+    span,
+    svg,
+    path {
+      transition: all $duration ease-in-out;
+    }
+
+    &:hover {
+      svg {
+        path {
+          stroke: darken($color: #b6b6b6, $amount: 50);
+        }
+      }
+      span {
+        color: darken($color: #b6b6b6, $amount: 50);
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid $gray-line;
+    padding-top: 30px;
+    margin-top: 30px;
+
+    &-img {
+      display: flex;
+      align-items: center;
+      margin-right: 15px;
+      width: 10%;
+
+      img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 40%;
+
+      h3 {
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 27px;
+        letter-spacing: 0.01em;
+      }
+
+      p {
+        font-size: 18px;
+        color: #8d8d8d;
+      }
+    }
+
+    &-count {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 13%;
+
+      &-minus {
+        svg {
+          path:first-of-type {
+            display: none;
+          }
+        }
+      }
+
+      b {
+        font-size: 22px;
+      }
+    }
+
+    &-price {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 33%;
+
+      b {
+        font-weight: bold;
+        font-size: 22px;
+        letter-spacing: 0.01em;
+      }
+    }
+
+    &-remove {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 4%;
+
+      .button {
+        border-color: darken($color: $gray-line, $amount: 10);
+      }
+
+      svg {
+        transform: rotate(45deg);
+
+        path {
+          fill: darken($color: $gray-line, $amount: 15);
+        }
+      }
+
+      .button {
+        svg {
+          width: 11.5px;
+          height: 11.5px;
+          position: relative;
+        }
+        &:hover,
+        &:active {
+          border-color: darken($color: $gray-line, $amount: 80);
+          background-color: darken($color: $gray-line, $amount: 80);
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    margin: 50px 0;
+
+    &-details {
+      display: flex;
+      justify-content: space-between;
+
+      span {
+        font-size: 22px;
+
+        &:last-of-type {
+          b {
+            color: $orange;
+          }
+        }
+      }
+    }
+
+    &-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+
+      .go-back-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 210px;
+
+        border-color: darken($color: $gray-line, $amount: 10);
+
+        span {
+          color: darken($color: $gray-line, $amount: 20);
+          font-weight: 500;
+          font-weight: 600;
+        }
+
+        &:hover {
+          background-color: darken($color: $gray-line, $amount: 90);
+          border-color: darken($color: $gray-line, $amount: 90);
+
+          span {
+            color: $gray-line;
+          }
+        }
+
+        svg {
+          margin-right: 12px;
+          path {
+            fill: transparent;
+            stroke-width: 2;
+          }
+        }
+      }
+
+      .pay-btn {
+        font-size: 16px;
+        font-weight: 600;
+        width: 210px;
+        padding: 16px;
+      }
+    }
+  }
+
+  &--empty {
+    margin: 0 auto;
+    width: 560px;
+    text-align: center;
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 145.4%;
+      letter-spacing: 0.01em;
+      color: #777777;
+    }
+
+    icon {
+      position: relative;
+      top: 2px;
+    }
+
+    img {
+      display: block;
+      width: 300px;
+      margin: 45px auto 60px;
+    }
+
+    .button--black {
+      padding: 12px 0 14px;
+      width: 230px;
+      margin: 0 auto;
+      font-weight: 600;
+      font-size: 18px;
+    }
+  }
+}
+</style>
