@@ -1,25 +1,36 @@
 <template>
   <div>
     <div class="pizza-block">
-      <img
-        class="pizza-block__image"
-        src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
-        alt="Pizza"
-      />
-      <h4 class="pizza-block__title">Чизбургер-пицца</h4>
+      <img class="pizza-block__image" :src="pizza.imageUrl" alt="Pizza" />
+      <h4 class="pizza-block__title">{{ pizza.title }}</h4>
       <div class="pizza-block__selector">
         <ul>
-          <li class="active">тонкое</li>
-          <li>традиционное</li>
+          <li
+            v-for="(type, index) in pizza.types"
+            :key="type"
+            :class="{ active: types[index] === types[activeType] }"
+            @click="setActiveType(type)"
+          >
+            {{ types[type] }}
+          </li>
+          <!-- <li class="active">тонкое</li>
+          <li>традиционное</li> -->
         </ul>
         <ul>
-          <li class="active">26 см.</li>
-          <li>30 см.</li>
-          <li>40 см.</li>
+          <li
+            v-for="(size, index) in pizza.sizes"
+            :key="size"
+            :class="{ active: index === activeSize }"
+            @click="setActiveSize(index)"
+          >
+            {{ size }}
+          </li>
+          <!-- <li>30 см.</li>
+          <li>40 см.</li> -->
         </ul>
       </div>
       <div class="pizza-block__bottom">
-        <div class="pizza-block__price">от 395 ₽</div>
+        <div class="pizza-block__price">от {{ pizza.price }} ₽</div>
         <my-button />
       </div>
     </div>
@@ -27,7 +38,29 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      types: ['тонкое', 'традиционное'],
+      activeType: 0,
+      activeSize: 0,
+    };
+  },
+  methods: {
+    setActiveType(type) {
+      this.activeType = type;
+    },
+    setActiveSize(size) {
+      this.activeSize = size;
+    },
+  },
+  props: {
+    pizza: {
+      type: Object,
+      required: true,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

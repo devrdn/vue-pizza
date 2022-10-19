@@ -10,11 +10,8 @@
           </div>
           <h2 class="content__title">Все пиццы</h2>
           <div class="content__items">
-            <pizza-block />
-            <pizza-block />
-            <pizza-block />
-            <pizza-block />
-            <pizza-block />
+            <div v-if="status === 'loading'">Пиццы загружаются, ожидайте :)</div>
+            <pizza-block v-for="pizza in pizzas" :key="pizza.id" :pizza="pizza" />
           </div>
         </div>
       </div>
@@ -27,12 +24,28 @@ import PizzaHeader from '@/components/PizzaHeader.vue';
 import PizzaCategory from '@/components/PizzaCategory.vue';
 import PizzaSort from '@/components/PizzaSort.vue';
 import PizzaBlock from '@/components/PizzaBlock.vue';
+import { mapActions, mapState } from 'vuex';
 export default {
   components: {
     PizzaHeader,
     PizzaCategory,
     PizzaSort,
     PizzaBlock,
+  },
+  methods: {
+    ...mapActions({
+      fetchPizzas: 'post/fetchPizzas',
+    }),
+  },
+  mounted() {
+    this.fetchPizzas();
+  },
+  computed: {
+    ...mapState({
+      pizzas: (state) => state.post.pizzas,
+      length: (state) => state.post.count,
+      status: (state) => state.post.status,
+    }),
   },
 };
 </script>
