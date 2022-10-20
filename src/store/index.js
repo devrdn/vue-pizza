@@ -5,6 +5,6 @@ import { pizzaModule } from '@/store/pizzaModule';
 export default createStore({
   modules: {
     filter: filterModule,
-    post: pizzaModule,
+    pizza: pizzaModule,
   },
 });

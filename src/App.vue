@@ -13,12 +13,7 @@
             <div v-if="status === 'loading'">
               Пиццы загружаются, ожидайте :)
             </div>
-            <pizza-block
-              v-else
-              v-for="pizza in pizzas"
-              :key="pizza.id"
-              :pizza="pizza"
-            />
+            <pizza-block v-else v-for="pizza in pizzas" :key="pizza.id" :pizza="pizza" />
           </div>
         </div>
       </div>
@@ -31,7 +26,7 @@ import PizzaHeader from "@/components/PizzaHeader.vue";
 import PizzaCategory from "@/components/PizzaCategory.vue";
 import PizzaSort from "@/components/PizzaSort.vue";
 import PizzaBlock from "@/components/PizzaBlock.vue";
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState, mapGetters } from "vuex";
 export default {
   components: {
     PizzaHeader,
@@ -41,20 +36,36 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetchPizzas: "post/fetchPizzas",
+      fetchPizzas: "pizza/fetchPizzas",
     }),
   },
   mounted() {
-    this.fetchPizzas(this.categoryId, this.sort);
+    this.fetchPizzas(this.categoryId);
+  },
+  watch: {
+    // categoryId() {
+    //   this.fetchPizzas(this.categoryId);
+    // },
+      '$store.state.filter': {
+        handler() {
+          this.fetchPizzas(this.categoryId);
+        },
+        immediate: true
+      }
   },
   computed: {
     ...mapState({
-      pizzas: (state) => state.post.pizzas,
-      length: (state) => state.post.count,
-      status: (state) => state.post.status,
       categoryId: (state) => state.filter.categoryId,
       sort: (state) => state.filter.sortType,
     }),
+    ...mapGetters({
+      pizzas: 'pizza/getPizzas',
+      length: 'pizza/getCount',
+      status: 'pizza/getStatus',
+    }),
+    filterPizza() {
+      return this.pizzas;
+    }
   },
 };
 </script>
@@ -101,6 +112,7 @@ body {
   &--cart {
     max-width: 820px;
     margin: 90px auto;
+
     .content__title {
       margin: 0;
     }
@@ -125,6 +137,7 @@ body {
       width: 30px;
       height: 30px;
       margin-right: 10px;
+
       path {
         stroke: $black;
         stroke-width: 1.9;
@@ -157,6 +170,7 @@ body {
           stroke: darken($color: #b6b6b6, $amount: 50);
         }
       }
+
       span {
         color: darken($color: #b6b6b6, $amount: 50);
       }
@@ -257,6 +271,7 @@ body {
           height: 11.5px;
           position: relative;
         }
+
         &:hover,
         &:active {
           border-color: darken($color: $gray-line, $amount: 80);
@@ -314,6 +329,7 @@ body {
 
         svg {
           margin-right: 12px;
+
           path {
             fill: transparent;
             stroke-width: 2;

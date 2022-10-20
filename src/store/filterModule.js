@@ -11,6 +11,11 @@ const filterModule = {
     },
   }),
 
+  getters: {
+    getCategoryId: (state) => state.categoryId,
+    getSortType: (state) => state.sortType,
+  },
+
   mutations: {
     setCategoryId(state, categoryId) {
       state.categoryId = categoryId;

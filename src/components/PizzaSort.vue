@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex';
+import { mapMutations, mapGetters } from 'vuex';
 export default {
   data() {
     return {
@@ -50,9 +50,9 @@ export default {
     },
   },
   computed: {
-    ...mapState({
-      sortType: (state) => state.filter.sortType,
-    }),
+    ...mapGetters({
+      sortType: 'filter/getSortType',
+    })
   },
 };
 </script>

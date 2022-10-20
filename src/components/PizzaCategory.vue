@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex';
+import { mapMutations, mapGetters } from 'vuex';
 
 export default {
   data() {
@@ -29,7 +29,7 @@ export default {
     }),
   },
   computed: {
-    ...mapState({ categoryId: (state) => state.filter.categoryId }),
+    ...mapGetters({ categoryId: 'filter/getCategoryId' }),
   },
 };
 </script>
