@@ -17,4 +17,4 @@ components.forEach((component) => {
   app.component(component.name, component);
 });
 
-app.use(store).mount('#app');
+app.use(router).use(store).mount('#app');

@@ -18,6 +18,7 @@ export default defineConfig({
           @import "@/scss/_variables.scss";
           @import "@/scss/_normalize.scss";
           @import "@/scss/_fonts.scss";
+          @import "@/scss/_button.scss";
         `,
       },
     },

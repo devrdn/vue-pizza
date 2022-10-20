@@ -9,7 +9,9 @@
         </div>
       </div>
       <div class="header__cart">
-        <double-button :rightInfo="totalPrice" :leftInfo="totalCount" />
+        <router-link to="/cart">
+          <double-button :rightInfo="totalPrice" :leftInfo="totalCount" />
+        </router-link>
       </div>
     </div>
   </div>

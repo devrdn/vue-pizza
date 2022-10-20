@@ -1,11 +1,58 @@
 <template>
-  <pizza-layout/>
+  <div class="container">
+    <div class="content__top">
+      <pizza-category />
+      <pizza-sort />
+    </div>
+    <h2 class="content__title">Все пиццы</h2>
+    <div class="content__items">
+      <div v-if="status === 'loading'">Пиццы загружаются, ожидайте :)</div>
+      <pizza-block v-else v-for="pizza in pizzas" :key="pizza.id" :pizza="pizza" />
+    </div>
+  </div>
 </template>
 
 <script>
-import PizzaLayout from '@/layouts/PizzaLayout.vue';
+import PizzaCategory from '@/components/PizzaCategory.vue';
+import PizzaSort from '@/components/PizzaSort.vue';
+import PizzaBlock from '@/components/PizzaBlock.vue';
+import { mapActions, mapGetters } from 'vuex';
 export default {
-  components: { PizzaLayout },
+  components: {
+    PizzaCategory,
+    PizzaSort,
+    PizzaBlock,
+},
+  methods: {
+    ...mapActions({
+      fetchPizzas: 'pizza/fetchPizzas',
+    }),
+  },
+  mounted() {
+    this.fetchPizzas({
+      categoryId: this.categoryId,
+      sort: this.sort,
+    });
+  },
+  watch: {
+    '$store.state.filter': {
+      handler() {
+        this.fetchPizzas({
+          categoryId: this.categoryId,
+          sort: this.sort,
+        });
+      },
+      deep: true,
+    },
+  },
+  computed: {
+    ...mapGetters({
+      pizzas: 'pizza/getPizzas',
+      status: 'pizza/getStatus',
+      sort: 'filter/getSortType',
+      categoryId: 'filter/getCategoryId',
+    }),
+  },
 };
 </script>
 
