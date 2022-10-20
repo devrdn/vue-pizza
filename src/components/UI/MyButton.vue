@@ -7,13 +7,19 @@
       />
     </svg>
     <span>Добавить</span>
-    <i>2</i>
+    <i v-if="value !== 0">{{ value }}</i>
   </button>
 </template>
 
 <script>
 export default {
-  name: 'MyButton'
+  name: 'MyButton',
+  props: {
+    value: {
+      type: Number,
+      required: true,
+    },
+  },
 };
 </script>
 

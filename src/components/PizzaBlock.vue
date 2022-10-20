@@ -13,52 +13,73 @@
           >
             {{ types[type] }}
           </li>
-          <!-- <li class="active">тонкое</li>
-          <li>традиционное</li> -->
         </ul>
         <ul>
           <li
             v-for="(size, index) in pizza.sizes"
             :key="size"
-            :class="{ active: index === activeSize }"
-            @click="setActiveSize(index)"
+            :class="{ active: size === activeSize }"
+            @click="setActiveSize(size)"
           >
             {{ size }}
           </li>
-          <!-- <li>30 см.</li>
-          <li>40 см.</li> -->
         </ul>
       </div>
       <div class="pizza-block__bottom">
         <div class="pizza-block__price">от {{ pizza.price }} ₽</div>
-        <my-button />
+        <my-button @click="onClickAdd" :value="getCountById(pizza.id)" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
-  data() {
-    return {
-      types: ['тонкое', 'традиционное'],
-      activeType: 0,
-      activeSize: 0,
-    };
-  },
-  methods: {
-    setActiveType(type) {
-      this.activeType = type;
-    },
-    setActiveSize(size) {
-      this.activeSize = size;
-    },
-  },
   props: {
     pizza: {
       type: Object,
       required: true,
     },
+  },
+  data() {
+    return {
+      types: ['тонкое', 'традиционное'],
+      activeType: 0,
+      activeSize: this.pizza.sizes[0],
+    };
+  },
+  methods: {
+    // Action Methods
+    ...mapActions({
+      addPizzaToCart: 'cart/addPizzaToCart',
+    }),
+
+    setActiveType(type) {
+      this.activeType = type;
+    },
+
+    setActiveSize(size) {
+      this.activeSize = size;
+    },
+
+    onClickAdd() {
+      const pizzaItemToCard = {
+        id: this.pizza.id,
+        title: this.pizza.title,
+        imageUrl: this.pizza.imageUrl,
+        price: this.pizza.price,
+        type: this.types[this.activeType],
+        size: this.activeSize,
+      };
+      this.addPizzaToCart(pizzaItemToCard);
+    },
+  },
+  computed: {
+    ...mapGetters({
+      getCountById: 'cart/getPizzaCountById',
+    }),
   },
 };
 </script>

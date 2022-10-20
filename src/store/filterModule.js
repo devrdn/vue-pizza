@@ -1,13 +1,15 @@
 /**
  * Filter Module
+ *
+ * Responsible for filtering: categories and sorting
  */
 const filterModule = {
   state: () => ({
     categoryId: 0,
     sortType: {
-      name: "популярности",
-      type: "rating",
-      orderBy: "asc",
+      name: 'популярности',
+      type: 'rating',
+      orderBy: 'asc',
     },
   }),
 

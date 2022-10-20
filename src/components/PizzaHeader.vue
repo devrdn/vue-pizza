@@ -9,19 +9,26 @@
         </div>
       </div>
       <div class="header__cart">
-        <double-button rightInfo="0 $" leftInfo="1" />
+        <double-button :rightInfo="totalPrice" :leftInfo="totalCount" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import pizzaLogo from '/logo.svg';
 export default {
   data() {
     return {
       logo: pizzaLogo,
     };
+  },
+  computed: {
+    ...mapGetters({
+      totalPrice: 'cart/getPrice',
+      totalCount: 'cart/getCount',
+    }),
   },
 };
 </script>
@@ -35,10 +42,29 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 645px) {
+      flex-direction: column;
+
+      .header__name {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .header__cart {
+        margin-top: 15px;
+      }
+    }
   }
 
   &__logo {
     display: flex;
+
+    @media (max-width: 645px) {
+      flex-direction: column;
+      align-items: center;
+    }
 
     img {
       margin-right: 15px;

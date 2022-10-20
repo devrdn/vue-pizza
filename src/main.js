@@ -10,6 +10,9 @@ import store from './store';
 
 const app = createApp(App);
 
+app.config.devtools = true;
+
+// global registration of components
 components.forEach((component) => {
   app.component(component.name, component);
 });

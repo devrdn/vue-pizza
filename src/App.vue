@@ -24,7 +24,7 @@ import PizzaHeader from '@/components/PizzaHeader.vue';
 import PizzaCategory from '@/components/PizzaCategory.vue';
 import PizzaSort from '@/components/PizzaSort.vue';
 import PizzaBlock from '@/components/PizzaBlock.vue';
-import { mapActions, mapState, mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 export default {
   components: {
     PizzaHeader,
@@ -55,11 +55,11 @@ export default {
     },
   },
   computed: {
-    ...mapState({
-      sort: (state) => state.filter.sortType,
-      categoryId: (state) => state.filter.categoryId,
-      pizzas: (state) => state.pizza.pizzas,
-      status: (state) => state.pizza.status,
+    ...mapGetters({
+      pizzas: 'pizza/getPizzas',
+      status: 'pizza/getStatus',
+      sort: 'filter/getSortType',
+      categoryId: 'filter/getCategoryId',
     }),
   },
 };
@@ -73,6 +73,14 @@ body {
 
 .wrapper {
   width: calc(100vw - 100px);
+  @media (max-width: 650px) {
+    width: calc(100vw - 50px);
+  }
+  @media (max-width: 400px) {
+    width: 100vw;
+    margin: 0px;
+    border-radius: 0px;
+  }
   height: 100%;
   background-color: #fff;
   margin: 50px auto;
@@ -88,15 +96,54 @@ body {
   }
 
   &__items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 11px;
+    justify-items: center;
+
+    @media (max-width: 1400px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 1060px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 730px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 
   &__top {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 1260px) {
+      .categories {
+        overflow: auto;
+        width: 100%;
+        ul {
+          width: 785px;
+        }
+      }
+      .sort__label {
+        margin-left: 20px;
+      }
+    }
+
+    @media (max-width: 950px) {
+      flex-direction: column;
+
+      .sort__label {
+        margin-left: 0px;
+      }
+
+      .categories {
+        margin-bottom: 30px;
+      }
+    }
   }
 }
 
@@ -107,7 +154,6 @@ body {
   &--cart {
     max-width: 820px;
     margin: 90px auto;
-
     .content__title {
       margin: 0;
     }
@@ -121,6 +167,10 @@ body {
     align-items: center;
   }
 
+  .content__items {
+    display: block;
+  }
+
   .content__title {
     display: flex;
     align-items: center;
@@ -132,7 +182,6 @@ body {
       width: 30px;
       height: 30px;
       margin-right: 10px;
-
       path {
         stroke: $black;
         stroke-width: 1.9;
@@ -165,7 +214,6 @@ body {
           stroke: darken($color: #b6b6b6, $amount: 50);
         }
       }
-
       span {
         color: darken($color: #b6b6b6, $amount: 50);
       }
@@ -266,7 +314,6 @@ body {
           height: 11.5px;
           position: relative;
         }
-
         &:hover,
         &:active {
           border-color: darken($color: $gray-line, $amount: 80);
@@ -324,7 +371,6 @@ body {
 
         svg {
           margin-right: 12px;
-
           path {
             fill: transparent;
             stroke-width: 2;
@@ -342,7 +388,7 @@ body {
   }
 
   &--empty {
-    margin: 0 auto;
+    margin: 80px auto;
     width: 560px;
     text-align: center;
 
