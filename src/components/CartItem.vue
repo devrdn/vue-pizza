@@ -8,7 +8,10 @@
       <p>{{ pizza.type }} тесто, {{ pizza.size }} см.</p>
     </div>
     <div class="cart__item-count">
-      <div @click="minusPizza(pizza)" class="button button--outline button--circle cart__item-count-minus">
+      <div
+        @click="minusPizza(pizza)"
+        class="button button--outline button--circle cart__item-count-minus"
+      >
         <svg
           width="10"
           height="10"
@@ -52,7 +55,7 @@
     <div class="cart__item-price">
       <b>{{ pizza.price * pizza.count }} ₽</b>
     </div>
-    <div @click="removePizza(currentPizza)" class="cart__item-remove">
+    <div @click="removePizza(pizza)" class="cart__item-remove">
       <div class="button button--outline button--circle">
         <svg
           width="10"
@@ -79,17 +82,6 @@
 import { mapActions } from 'vuex';
 
 export default {
-  data() {
-    return {
-      currentPizza: {
-        id: this.pizza.id,
-        size: this.pizza.size,
-        type: this.pizza.type,
-        price: this.pizza.price,
-        count: this.pizza.count,
-      },
-    };
-  },
   props: {
     pizza: {
       type: Object,

@@ -102,21 +102,19 @@ export const cartModule = {
      * @param {Object} param1 state and commit
      * @param {Object} param2 pizza params
      */
-    removePizza({ state, commit }, { id, type, size, price, count }) {
+    removePizza({ state, commit }, pizza) {
       if (state.pizzas.length !== 0) {
-        const params = {
-          id,
-          type,
-          size,
-          price,
-          count,
-        };
-        commit('removePizza', params);
-        commit('addPrice', -(params.price * params.count));
-        commit('addCount', -params.count);
+        commit('removePizza', pizza);
+        commit('addPrice', -(pizza.price * pizza.count));
+        commit('addCount', -pizza.count);
       }
     },
 
+    /**
+     * Minus certain pizza from cart
+     * @param {Object} param state and commit
+     * @param {Object} pizza pizza to minus
+     */
     minusPizza({ state, commit }, pizza) {
       const findPizza = state.pizzas.find(
         (item) => pizza.id === item.id && pizza.size === item.size && pizza.type === item.type,
