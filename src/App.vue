@@ -10,8 +10,15 @@
           </div>
           <h2 class="content__title">Все пиццы</h2>
           <div class="content__items">
-            <div v-if="status === 'loading'">Пиццы загружаются, ожидайте :)</div>
-            <pizza-block v-for="pizza in pizzas" :key="pizza.id" :pizza="pizza" />
+            <div v-if="status === 'loading'">
+              Пиццы загружаются, ожидайте :)
+            </div>
+            <pizza-block
+              v-else
+              v-for="pizza in pizzas"
+              :key="pizza.id"
+              :pizza="pizza"
+            />
           </div>
         </div>
       </div>
@@ -20,11 +27,11 @@
 </template>
 
 <script>
-import PizzaHeader from '@/components/PizzaHeader.vue';
-import PizzaCategory from '@/components/PizzaCategory.vue';
-import PizzaSort from '@/components/PizzaSort.vue';
-import PizzaBlock from '@/components/PizzaBlock.vue';
-import { mapActions, mapState } from 'vuex';
+import PizzaHeader from "@/components/PizzaHeader.vue";
+import PizzaCategory from "@/components/PizzaCategory.vue";
+import PizzaSort from "@/components/PizzaSort.vue";
+import PizzaBlock from "@/components/PizzaBlock.vue";
+import { mapActions, mapState } from "vuex";
 export default {
   components: {
     PizzaHeader,
@@ -34,17 +41,19 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetchPizzas: 'post/fetchPizzas',
+      fetchPizzas: "post/fetchPizzas",
     }),
   },
   mounted() {
-    this.fetchPizzas();
+    this.fetchPizzas(this.categoryId, this.sort);
   },
   computed: {
     ...mapState({
       pizzas: (state) => state.post.pizzas,
       length: (state) => state.post.count,
       status: (state) => state.post.status,
+      categoryId: (state) => state.filter.categoryId,
+      sort: (state) => state.filter.sortType,
     }),
   },
 };
@@ -53,7 +62,7 @@ export default {
 <style lang="scss">
 body {
   background-color: $background;
-  font-family: 'Lato';
+  font-family: "Lato";
 }
 
 .wrapper {

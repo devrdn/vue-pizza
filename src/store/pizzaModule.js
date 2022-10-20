@@ -24,9 +24,9 @@ export const pizzaModule = {
   },
 
   actions: {
-    async fetchPizzas({ state, commit }) {
+    async fetchPizzas({ state, commit }, cat_id) {
       try {
-        const data = await pizzas.fetchPizzas();
+        const data = await pizzas.fetchPizzas(cat_id);
         console.log(data);
         commit('setPizzas', data.data.items);
         commit('setCount', data.data.count);

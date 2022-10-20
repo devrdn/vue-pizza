@@ -30,9 +30,9 @@ export default {
   data() {
     return {
       sortList: [
-        { name: 'популярности', type: 'rating' },
-        { name: 'алфавит', type: 'rating' },
-        { name: 'цена', type: 'rating' },
+        { name: 'популярности', type: 'rating', order: 'asc' },
+        { name: 'алфавит', type: 'rating', order: 'asc' },
+        { name: 'цена', type: 'rating', order: 'asc' },
       ],
       isActivePopup: false,
     };

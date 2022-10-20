@@ -5,8 +5,9 @@ const filterModule = {
   state: () => ({
     categoryId: 0,
     sortType: {
-      name: 'популярности',
-      type: 'rating',
+      name: "популярности",
+      type: "rating",
+      orderBy: "asc",
     },
   }),
 
