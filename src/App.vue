@@ -10,9 +10,7 @@
           </div>
           <h2 class="content__title">Все пиццы</h2>
           <div class="content__items">
-            <div v-if="status === 'loading'">
-              Пиццы загружаются, ожидайте :)
-            </div>
+            <div v-if="status === 'loading'">Пиццы загружаются, ожидайте :)</div>
             <pizza-block v-else v-for="pizza in pizzas" :key="pizza.id" :pizza="pizza" />
           </div>
         </div>
@@ -22,11 +20,11 @@
 </template>
 
 <script>
-import PizzaHeader from "@/components/PizzaHeader.vue";
-import PizzaCategory from "@/components/PizzaCategory.vue";
-import PizzaSort from "@/components/PizzaSort.vue";
-import PizzaBlock from "@/components/PizzaBlock.vue";
-import { mapActions, mapState, mapGetters } from "vuex";
+import PizzaHeader from '@/components/PizzaHeader.vue';
+import PizzaCategory from '@/components/PizzaCategory.vue';
+import PizzaSort from '@/components/PizzaSort.vue';
+import PizzaBlock from '@/components/PizzaBlock.vue';
+import { mapActions, mapState, mapGetters } from 'vuex';
 export default {
   components: {
     PizzaHeader,
@@ -36,36 +34,33 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetchPizzas: "pizza/fetchPizzas",
+      fetchPizzas: 'pizza/fetchPizzas',
     }),
   },
   mounted() {
-    this.fetchPizzas(this.categoryId);
+    this.fetchPizzas({
+      categoryId: this.categoryId,
+      sort: this.sort,
+    });
   },
   watch: {
-    // categoryId() {
-    //   this.fetchPizzas(this.categoryId);
-    // },
-      '$store.state.filter': {
-        handler() {
-          this.fetchPizzas(this.categoryId);
-        },
-        immediate: true
-      }
+    '$store.state.filter': {
+      handler() {
+        this.fetchPizzas({
+          categoryId: this.categoryId,
+          sort: this.sort,
+        });
+      },
+      deep: true,
+    },
   },
   computed: {
     ...mapState({
-      categoryId: (state) => state.filter.categoryId,
       sort: (state) => state.filter.sortType,
+      categoryId: (state) => state.filter.categoryId,
+      pizzas: (state) => state.pizza.pizzas,
+      status: (state) => state.pizza.status,
     }),
-    ...mapGetters({
-      pizzas: 'pizza/getPizzas',
-      length: 'pizza/getCount',
-      status: 'pizza/getStatus',
-    }),
-    filterPizza() {
-      return this.pizzas;
-    }
   },
 };
 </script>
@@ -73,7 +68,7 @@ export default {
 <style lang="scss">
 body {
   background-color: $background;
-  font-family: "Lato";
+  font-family: 'Lato';
 }
 
 .wrapper {

@@ -31,8 +31,8 @@ export default {
     return {
       sortList: [
         { name: 'популярности', type: 'rating', order: 'asc' },
-        { name: 'алфавит', type: 'rating', order: 'asc' },
-        { name: 'цена', type: 'rating', order: 'asc' },
+        { name: 'алфавит', type: 'title', order: 'asc' },
+        { name: 'цена', type: 'price', order: 'asc' },
       ],
       isActivePopup: false,
     };

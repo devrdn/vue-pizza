@@ -1,10 +1,10 @@
-import pizzas from "@/api/pizzas";
+import pizzas from '@/api/pizzas';
 
 export const pizzaModule = {
   state: () => ({
     pizzas: [],
     count: 0,
-    status: "loading",
+    status: 'loading',
   }),
 
   getters: {
@@ -28,15 +28,15 @@ export const pizzaModule = {
   },
 
   actions: {
-    async fetchPizzas({ commit }, cat_id) {
+    async fetchPizzas({ commit }, { categoryId, sort }) {
       try {
-        commit("setStatus", "loading");
-        const data = await pizzas.fetchPizzas(cat_id);
-        commit("setPizzas", data.data.items);
-        commit("setCount", data.data.count);
-        commit("setStatus", "success");
+        commit('setStatus', 'loading');
+        const data = await pizzas.fetchPizzas(categoryId, sort);
+        commit('setPizzas', data.data.items);
+        commit('setCount', data.data.count);
+        commit('setStatus', 'success');
       } catch (e) {
-        commit("setStatus", "failed");
+        commit('setStatus', 'failed');
       }
     },
   },
