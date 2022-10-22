@@ -8,6 +8,7 @@
           <p>самая вкусная пицца во вселенной Vue</p>
         </div>
       </div>
+      <pizza-search />
       <div class="header__cart">
         <router-link to="/cart">
           <double-button :rightInfo="totalPrice" :leftInfo="totalCount" />
@@ -20,6 +21,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import pizzaLogo from '/logo.svg';
+import PizzaSearch from './PizzaSearch.vue';
 export default {
   data() {
     return {
@@ -32,6 +34,7 @@ export default {
       totalCount: 'cart/getCount',
     }),
   },
+  components: { PizzaSearch },
 };
 </script>
 

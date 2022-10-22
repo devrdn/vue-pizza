@@ -6,7 +6,8 @@
     </div>
     <h2 class="content__title">Все пиццы</h2>
     <div class="content__items">
-      <div v-if="status === 'loading'">Пиццы загружаются, ожидайте :)</div>
+      <div v-if="status === 'failed' || pizzas.length === 0">Пиццы не найдены</div>
+      <div v-else-if="status === 'loading'">Пиццы загружаются, ожидайте :)</div>
       <pizza-block v-else v-for="pizza in pizzas" :key="pizza.id" :pizza="pizza" />
     </div>
   </div>
@@ -22,7 +23,7 @@ export default {
     PizzaCategory,
     PizzaSort,
     PizzaBlock,
-},
+  },
   methods: {
     ...mapActions({
       fetchPizzas: 'pizza/fetchPizzas',
@@ -32,6 +33,7 @@ export default {
     this.fetchPizzas({
       categoryId: this.categoryId,
       sort: this.sort,
+      search: this.search,
     });
   },
   watch: {
@@ -40,6 +42,7 @@ export default {
         this.fetchPizzas({
           categoryId: this.categoryId,
           sort: this.sort,
+          search: this.search,
         });
       },
       deep: true,
@@ -51,6 +54,7 @@ export default {
       status: 'pizza/getStatus',
       sort: 'filter/getSortType',
       categoryId: 'filter/getCategoryId',
+      search: 'filter/getSearch',
     }),
   },
 };

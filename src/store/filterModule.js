@@ -11,11 +11,13 @@ const filterModule = {
       type: 'rating',
       orderBy: 'asc',
     },
+    search: '',
   }),
 
   getters: {
     getCategoryId: (state) => state.categoryId,
     getSortType: (state) => state.sortType,
+    getSearch: (state) => state.search,
   },
 
   mutations: {
@@ -24,6 +26,15 @@ const filterModule = {
     },
     setSortType(state, sortType) {
       state.sortType = sortType;
+    },
+    setSearch(state, searchText) {
+      state.search = searchText;
+    },
+  },
+
+  actions: {
+    setSearch({ commit }, search) {
+      commit('setSearch', search);
     },
   },
 

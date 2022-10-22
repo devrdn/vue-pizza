@@ -28,10 +28,10 @@ export const pizzaModule = {
   },
 
   actions: {
-    async fetchPizzas({ commit }, { categoryId, sort }) {
+    async fetchPizzas({ commit }, { categoryId, sort, search }) {
       try {
         commit('setStatus', 'loading');
-        const data = await pizzas.fetchPizzas(categoryId, sort);
+        const data = await pizzas.fetchPizzas(categoryId, sort, search);
         commit('setPizzas', data.data.items);
         commit('setCount', data.data.count);
         commit('setStatus', 'success');
