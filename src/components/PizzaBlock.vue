@@ -1,8 +1,10 @@
 <template>
   <div>
     <div class="pizza-block">
-      <img class="pizza-block__image" :src="pizza.imageUrl" alt="Pizza" />
-      <h4 class="pizza-block__title">{{ pizza.title }}</h4>
+      <router-link :to="'/pizza/' + pizza.id">
+        <img class="pizza-block__image" :src="pizza.imageUrl" alt="Pizza" />
+        <h4 class="pizza-block__title">{{ pizza.title }}</h4>
+      </router-link>
       <div class="pizza-block__selector">
         <ul>
           <li

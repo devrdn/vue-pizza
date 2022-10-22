@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import PizzaHome from '@/pages/PizzaHome.vue';
-import PizzaCart from '@/pages/PizzaCart.vue';
 
 const routes = [
   {
@@ -10,6 +9,7 @@ const routes = [
   },
   {
     path: '/pizza/:id',
+    component: () => import('@/pages/PizzaPage.vue'),
   },
   {
     path: '/cart',

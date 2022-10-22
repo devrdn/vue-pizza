@@ -28,6 +28,11 @@ export const pizzaModule = {
   },
 
   actions: {
+    /**
+     * Fetch pizza from server
+     * @param {Object} param0 commit
+     * @param {Object} param1 filter params
+     */
     async fetchPizzas({ commit }, { categoryId, sort, search }) {
       try {
         commit('setStatus', 'loading');
